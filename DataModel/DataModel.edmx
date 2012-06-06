@@ -1,0 +1,591 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DataModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="DataModelStoreContainer">
+          <EntitySet Name="fds01" EntityType="DataModel.Store.fds01" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="fds0111" EntityType="DataModel.Store.fds0111" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="fss011" EntityType="DataModel.Store.fss011" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="hh07" EntityType="DataModel.Store.hh07" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="hh15" EntityType="DataModel.Store.hh15" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_fds01_hh15" Association="DataModel.Store.FK_fds01_hh15">
+            <End Role="hh15" EntitySet="hh15" />
+            <End Role="fds01" EntitySet="fds01" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fds0111_fds0111" Association="DataModel.Store.FK_fds0111_fds0111">
+            <End Role="fds0111" EntitySet="fds0111" />
+            <End Role="fds01111" EntitySet="fds0111" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fds0111_fss011" Association="DataModel.Store.FK_fds0111_fss011">
+            <End Role="fss011" EntitySet="fss011" />
+            <End Role="fds0111" EntitySet="fds0111" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fds0111_hh15" Association="DataModel.Store.FK_fds0111_hh15">
+            <End Role="hh15" EntitySet="hh15" />
+            <End Role="fds0111" EntitySet="fds0111" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fss011_fds01" Association="DataModel.Store.FK_fss011_fds01">
+            <End Role="fds01" EntitySet="fds01" />
+            <End Role="fss011" EntitySet="fss011" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fss011_fss011" Association="DataModel.Store.FK_fss011_fss011">
+            <End Role="fss011" EntitySet="fss011" />
+            <End Role="fss0111" EntitySet="fss011" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fss011_hh07" Association="DataModel.Store.FK_fss011_hh07">
+            <End Role="hh07" EntitySet="hh07" />
+            <End Role="fss011" EntitySet="fss011" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fss011_hh15" Association="DataModel.Store.FK_fss011_hh15">
+            <End Role="hh15" EntitySet="hh15" />
+            <End Role="fss011" EntitySet="fss011" />
+          </AssociationSet>
+          <AssociationSet Name="FK_hh07_hh15" Association="DataModel.Store.FK_hh07_hh15">
+            <End Role="hh15" EntitySet="hh15" />
+            <End Role="hh07" EntitySet="hh07" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="fds01">
+          <Key>
+            <PropertyRef Name="szdoc_id" />
+          </Key>
+          <Property Name="szdoc_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="pred_id" Type="int" Nullable="false" />
+          <Property Name="szdocv_nc" Type="nchar" MaxLength="10" />
+          <Property Name="szdocv_dat" Type="date" />
+          <Property Name="szdocr_nc" Type="nchar" MaxLength="10" />
+          <Property Name="szdocr_dat" Type="date" />
+          <Property Name="face_id" Type="int" />
+          <Property Name="szdoc_desc" Type="text" />
+        </EntityType>
+        <EntityType Name="fds0111">
+          <Key>
+            <PropertyRef Name="szdocet_id" />
+          </Key>
+          <Property Name="szdocet_id" Type="int" Nullable="false" />
+          <Property Name="strszdoc_id" Type="int" />
+          <Property Name="pred_id" Type="int" />
+          <Property Name="szdocet_desc" Type="text" />
+          <Property Name="start_dat" Type="date" />
+          <Property Name="end_dat" Type="nchar" MaxLength="10" />
+          <Property Name="upszdocet_id" Type="int" />
+        </EntityType>
+        <EntityType Name="fss011">
+          <Key>
+            <PropertyRef Name="strsdoc_id" />
+          </Key>
+          <Property Name="strsdoc_id" Type="int" Nullable="false" />
+          <Property Name="upstrsdoc_id" Type="int" />
+          <Property Name="szdoc_id" Type="int" />
+          <Property Name="pred_id" Type="int" />
+          <Property Name="face_id" Type="int" />
+          <Property Name="ispto_dat" Type="date" />
+          <Property Name="close_dat" Type="date" />
+          <Property Name="isptype_n" Type="numeric" />
+          <Property Name="strzdoc_rem" Type="text" />
+        </EntityType>
+        <EntityType Name="hh07">
+          <Key>
+            <PropertyRef Name="face_id" />
+          </Key>
+          <Property Name="face_id" Type="int" Nullable="false" />
+          <Property Name="pred_id" Type="int" Nullable="false" />
+          <Property Name="face_f" Type="nchar" MaxLength="20" />
+          <Property Name="face_i" Type="nchar" MaxLength="20" />
+          <Property Name="face_o" Type="nchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="hh15">
+          <Key>
+            <PropertyRef Name="pred_id" />
+          </Key>
+          <Property Name="pred_id" Type="int" Nullable="false" />
+          <Property Name="pred_nam" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_fds01_hh15">
+          <End Role="hh15" Type="DataModel.Store.hh15" Multiplicity="1" />
+          <End Role="fds01" Type="DataModel.Store.fds01" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hh15">
+              <PropertyRef Name="pred_id" />
+            </Principal>
+            <Dependent Role="fds01">
+              <PropertyRef Name="pred_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fds0111_fds0111">
+          <End Role="fds0111" Type="DataModel.Store.fds0111" Multiplicity="0..1" />
+          <End Role="fds01111" Type="DataModel.Store.fds0111" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fds0111">
+              <PropertyRef Name="szdocet_id" />
+            </Principal>
+            <Dependent Role="fds01111">
+              <PropertyRef Name="upszdocet_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fds0111_fss011">
+          <End Role="fss011" Type="DataModel.Store.fss011" Multiplicity="0..1" />
+          <End Role="fds0111" Type="DataModel.Store.fds0111" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fss011">
+              <PropertyRef Name="strsdoc_id" />
+            </Principal>
+            <Dependent Role="fds0111">
+              <PropertyRef Name="strszdoc_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fds0111_hh15">
+          <End Role="hh15" Type="DataModel.Store.hh15" Multiplicity="0..1" />
+          <End Role="fds0111" Type="DataModel.Store.fds0111" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hh15">
+              <PropertyRef Name="pred_id" />
+            </Principal>
+            <Dependent Role="fds0111">
+              <PropertyRef Name="pred_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fss011_fds01">
+          <End Role="fds01" Type="DataModel.Store.fds01" Multiplicity="0..1" />
+          <End Role="fss011" Type="DataModel.Store.fss011" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fds01">
+              <PropertyRef Name="szdoc_id" />
+            </Principal>
+            <Dependent Role="fss011">
+              <PropertyRef Name="szdoc_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fss011_fss011">
+          <End Role="fss011" Type="DataModel.Store.fss011" Multiplicity="0..1" />
+          <End Role="fss0111" Type="DataModel.Store.fss011" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fss011">
+              <PropertyRef Name="strsdoc_id" />
+            </Principal>
+            <Dependent Role="fss0111">
+              <PropertyRef Name="upstrsdoc_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fss011_hh07">
+          <End Role="hh07" Type="DataModel.Store.hh07" Multiplicity="0..1" />
+          <End Role="fss011" Type="DataModel.Store.fss011" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hh07">
+              <PropertyRef Name="face_id" />
+            </Principal>
+            <Dependent Role="fss011">
+              <PropertyRef Name="face_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fss011_hh15">
+          <End Role="hh15" Type="DataModel.Store.hh15" Multiplicity="0..1" />
+          <End Role="fss011" Type="DataModel.Store.fss011" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hh15">
+              <PropertyRef Name="pred_id" />
+            </Principal>
+            <Dependent Role="fss011">
+              <PropertyRef Name="pred_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_hh07_hh15">
+          <End Role="hh15" Type="DataModel.Store.hh15" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="hh07" Type="DataModel.Store.hh07" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hh15">
+              <PropertyRef Name="pred_id" />
+            </Principal>
+            <Dependent Role="hh07">
+              <PropertyRef Name="pred_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema xmlns="http://schemas.microsoft.com/ado/2008/09/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="DataModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="DataModelContainer" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="fds01" EntityType="DataModel.fds01" />
+          <EntitySet Name="fds0111" EntityType="DataModel.fds0111" />
+          <EntitySet Name="fss011" EntityType="DataModel.fss011" />
+          <EntitySet Name="Employes" EntityType="DataModel.Employee" />
+          <EntitySet Name="hh15" EntityType="DataModel.hh15" />
+          <AssociationSet Name="FK_fds01_hh15" Association="DataModel.FK_fds01_hh15">
+            <End Role="hh15" EntitySet="hh15" />
+            <End Role="fds01" EntitySet="fds01" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fss011_fds01" Association="DataModel.FK_fss011_fds01">
+            <End Role="fds01" EntitySet="fds01" />
+            <End Role="fss011" EntitySet="fss011" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fds0111_fds0111" Association="DataModel.FK_fds0111_fds0111">
+            <End Role="fds0111" EntitySet="fds0111" />
+            <End Role="fds01111" EntitySet="fds0111" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fds0111_fss011" Association="DataModel.FK_fds0111_fss011">
+            <End Role="fss011" EntitySet="fss011" />
+            <End Role="fds0111" EntitySet="fds0111" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fds0111_hh15" Association="DataModel.FK_fds0111_hh15">
+            <End Role="hh15" EntitySet="hh15" />
+            <End Role="fds0111" EntitySet="fds0111" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fss011_fss011" Association="DataModel.FK_fss011_fss011">
+            <End Role="fss011" EntitySet="fss011" />
+            <End Role="fss0111" EntitySet="fss011" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fss011_hh07" Association="DataModel.FK_fss011_hh07">
+            <End Role="hh07" EntitySet="Employes" />
+            <End Role="fss011" EntitySet="fss011" />
+          </AssociationSet>
+          <AssociationSet Name="FK_fss011_hh15" Association="DataModel.FK_fss011_hh15">
+            <End Role="hh15" EntitySet="hh15" />
+            <End Role="fss011" EntitySet="fss011" />
+          </AssociationSet>
+          <AssociationSet Name="FK_hh07_hh15" Association="DataModel.FK_hh07_hh15">
+            <End Role="hh15" EntitySet="hh15" />
+            <End Role="hh07" EntitySet="Employes" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="fds01">
+          <Key>
+            <PropertyRef Name="szdoc_id" />
+          </Key>
+          <Property Type="Int32" Name="szdoc_id" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="pred_id" Nullable="false" />
+          <Property Type="String" Name="szdocv_nc" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="DateTime" Name="szdocv_dat" />
+          <Property Type="String" Name="szdocr_nc" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="DateTime" Name="szdocr_dat" />
+          <Property Type="Int32" Name="face_id" />
+          <Property Type="String" Name="szdoc_desc" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="hh15" Relationship="DataModel.FK_fds01_hh15" FromRole="fds01" ToRole="hh15" />
+          <NavigationProperty Name="fss011" Relationship="DataModel.FK_fss011_fds01" FromRole="fds01" ToRole="fss011" />
+        </EntityType>
+        <EntityType Name="fds0111">
+          <Key>
+            <PropertyRef Name="szdocet_id" />
+          </Key>
+          <Property Type="Int32" Name="szdocet_id" Nullable="false" />
+          <Property Type="Int32" Name="strszdoc_id" />
+          <Property Type="Int32" Name="pred_id" />
+          <Property Type="String" Name="szdocet_desc" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Type="DateTime" Name="start_dat" />
+          <Property Type="String" Name="end_dat" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Type="Int32" Name="upszdocet_id" />
+          <NavigationProperty Name="fds01111" Relationship="DataModel.FK_fds0111_fds0111" FromRole="fds0111" ToRole="fds01111" />
+          <NavigationProperty Name="fds01112" Relationship="DataModel.FK_fds0111_fds0111" FromRole="fds01111" ToRole="fds0111" />
+          <NavigationProperty Name="fss011" Relationship="DataModel.FK_fds0111_fss011" FromRole="fds0111" ToRole="fss011" />
+          <NavigationProperty Name="hh15" Relationship="DataModel.FK_fds0111_hh15" FromRole="fds0111" ToRole="hh15" />
+        </EntityType>
+        <EntityType Name="fss011">
+          <Key>
+            <PropertyRef Name="strsdoc_id" />
+          </Key>
+          <Property Type="Int32" Name="strsdoc_id" Nullable="false" />
+          <Property Type="Int32" Name="upstrsdoc_id" />
+          <Property Type="Int32" Name="szdoc_id" />
+          <Property Type="Int32" Name="pred_id" />
+          <Property Type="Int32" Name="face_id" />
+          <Property Type="DateTime" Name="ispto_dat" />
+          <Property Type="DateTime" Name="close_dat" />
+          <Property Type="Decimal" Name="isptype_n" Precision="18" Scale="0" />
+          <Property Type="String" Name="strzdoc_rem" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="fds01" Relationship="DataModel.FK_fss011_fds01" FromRole="fss011" ToRole="fds01" />
+          <NavigationProperty Name="fds0111" Relationship="DataModel.FK_fds0111_fss011" FromRole="fss011" ToRole="fds0111" />
+          <NavigationProperty Name="fss0111" Relationship="DataModel.FK_fss011_fss011" FromRole="fss011" ToRole="fss0111" />
+          <NavigationProperty Name="fss0112" Relationship="DataModel.FK_fss011_fss011" FromRole="fss0111" ToRole="fss011" />
+          <NavigationProperty Name="hh07" Relationship="DataModel.FK_fss011_hh07" FromRole="fss011" ToRole="hh07" />
+          <NavigationProperty Name="hh15" Relationship="DataModel.FK_fss011_hh15" FromRole="fss011" ToRole="hh15" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="face_id" />
+          </Key>
+          <Property Type="Int32" Name="face_id" Nullable="false" />
+          <Property Type="Int32" Name="pred_id" Nullable="false" />
+          <Property Type="String" Name="face_f" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="face_i" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="face_o" MaxLength="20" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="fss011" Relationship="DataModel.FK_fss011_hh07" FromRole="hh07" ToRole="fss011" />
+          <NavigationProperty Name="hh15" Relationship="DataModel.FK_hh07_hh15" FromRole="hh07" ToRole="hh15" />
+        </EntityType>
+        <EntityType Name="hh15">
+          <Key>
+            <PropertyRef Name="pred_id" />
+          </Key>
+          <Property Type="Int32" Name="pred_id" Nullable="false" />
+          <Property Type="String" Name="pred_nam" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="fds01" Relationship="DataModel.FK_fds01_hh15" FromRole="hh15" ToRole="fds01" />
+          <NavigationProperty Name="fds0111" Relationship="DataModel.FK_fds0111_hh15" FromRole="hh15" ToRole="fds0111" />
+          <NavigationProperty Name="fss011" Relationship="DataModel.FK_fss011_hh15" FromRole="hh15" ToRole="fss011" />
+          <NavigationProperty Name="hh07" Relationship="DataModel.FK_hh07_hh15" FromRole="hh15" ToRole="hh07" />
+        </EntityType>
+        <Association Name="FK_fds01_hh15">
+          <End Type="DataModel.hh15" Role="hh15" Multiplicity="1" />
+          <End Type="DataModel.fds01" Role="fds01" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hh15">
+              <PropertyRef Name="pred_id" />
+            </Principal>
+            <Dependent Role="fds01">
+              <PropertyRef Name="pred_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fss011_fds01">
+          <End Type="DataModel.fds01" Role="fds01" Multiplicity="0..1" />
+          <End Type="DataModel.fss011" Role="fss011" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fds01">
+              <PropertyRef Name="szdoc_id" />
+            </Principal>
+            <Dependent Role="fss011">
+              <PropertyRef Name="szdoc_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fds0111_fds0111">
+          <End Type="DataModel.fds0111" Role="fds0111" Multiplicity="0..1" />
+          <End Type="DataModel.fds0111" Role="fds01111" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fds0111">
+              <PropertyRef Name="szdocet_id" />
+            </Principal>
+            <Dependent Role="fds01111">
+              <PropertyRef Name="upszdocet_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fds0111_fss011">
+          <End Type="DataModel.fss011" Role="fss011" Multiplicity="0..1" />
+          <End Type="DataModel.fds0111" Role="fds0111" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fss011">
+              <PropertyRef Name="strsdoc_id" />
+            </Principal>
+            <Dependent Role="fds0111">
+              <PropertyRef Name="strszdoc_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fds0111_hh15">
+          <End Type="DataModel.hh15" Role="hh15" Multiplicity="0..1" />
+          <End Type="DataModel.fds0111" Role="fds0111" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hh15">
+              <PropertyRef Name="pred_id" />
+            </Principal>
+            <Dependent Role="fds0111">
+              <PropertyRef Name="pred_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fss011_fss011">
+          <End Type="DataModel.fss011" Role="fss011" Multiplicity="0..1" />
+          <End Type="DataModel.fss011" Role="fss0111" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="fss011">
+              <PropertyRef Name="strsdoc_id" />
+            </Principal>
+            <Dependent Role="fss0111">
+              <PropertyRef Name="upstrsdoc_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fss011_hh07">
+          <End Type="DataModel.Employee" Role="hh07" Multiplicity="0..1" />
+          <End Type="DataModel.fss011" Role="fss011" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hh07">
+              <PropertyRef Name="face_id" />
+            </Principal>
+            <Dependent Role="fss011">
+              <PropertyRef Name="face_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_fss011_hh15">
+          <End Type="DataModel.hh15" Role="hh15" Multiplicity="0..1" />
+          <End Type="DataModel.fss011" Role="fss011" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hh15">
+              <PropertyRef Name="pred_id" />
+            </Principal>
+            <Dependent Role="fss011">
+              <PropertyRef Name="pred_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_hh07_hh15">
+          <End Type="DataModel.hh15" Role="hh15" Multiplicity="1" />
+          <End Type="DataModel.Employee" Role="hh07" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hh15">
+              <PropertyRef Name="pred_id" />
+            </Principal>
+            <Dependent Role="hh07">
+              <PropertyRef Name="pred_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs" Space="C-S">
+        <Alias Key="Model" Value="DataModel" />
+        <Alias Key="Target" Value="DataModel.Store" />
+        <EntityContainerMapping CdmEntityContainer="DataModelContainer" StorageEntityContainer="DataModelStoreContainer">
+          <EntitySetMapping Name="fds01">
+            <EntityTypeMapping TypeName="DataModel.fds01">
+              <MappingFragment StoreEntitySet="fds01">
+                <ScalarProperty Name="szdoc_desc" ColumnName="szdoc_desc" />
+                <ScalarProperty Name="face_id" ColumnName="face_id" />
+                <ScalarProperty Name="szdocr_dat" ColumnName="szdocr_dat" />
+                <ScalarProperty Name="szdocr_nc" ColumnName="szdocr_nc" />
+                <ScalarProperty Name="szdocv_dat" ColumnName="szdocv_dat" />
+                <ScalarProperty Name="szdocv_nc" ColumnName="szdocv_nc" />
+                <ScalarProperty Name="pred_id" ColumnName="pred_id" />
+                <ScalarProperty Name="szdoc_id" ColumnName="szdoc_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fds0111">
+            <EntityTypeMapping TypeName="DataModel.fds0111">
+              <MappingFragment StoreEntitySet="fds0111">
+                <ScalarProperty Name="upszdocet_id" ColumnName="upszdocet_id" />
+                <ScalarProperty Name="end_dat" ColumnName="end_dat" />
+                <ScalarProperty Name="start_dat" ColumnName="start_dat" />
+                <ScalarProperty Name="szdocet_desc" ColumnName="szdocet_desc" />
+                <ScalarProperty Name="pred_id" ColumnName="pred_id" />
+                <ScalarProperty Name="strszdoc_id" ColumnName="strszdoc_id" />
+                <ScalarProperty Name="szdocet_id" ColumnName="szdocet_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="fss011">
+            <EntityTypeMapping TypeName="DataModel.fss011">
+              <MappingFragment StoreEntitySet="fss011">
+                <ScalarProperty Name="strzdoc_rem" ColumnName="strzdoc_rem" />
+                <ScalarProperty Name="isptype_n" ColumnName="isptype_n" />
+                <ScalarProperty Name="close_dat" ColumnName="close_dat" />
+                <ScalarProperty Name="ispto_dat" ColumnName="ispto_dat" />
+                <ScalarProperty Name="face_id" ColumnName="face_id" />
+                <ScalarProperty Name="pred_id" ColumnName="pred_id" />
+                <ScalarProperty Name="szdoc_id" ColumnName="szdoc_id" />
+                <ScalarProperty Name="upstrsdoc_id" ColumnName="upstrsdoc_id" />
+                <ScalarProperty Name="strsdoc_id" ColumnName="strsdoc_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employes">
+            <EntityTypeMapping TypeName="DataModel.Employee">
+              <MappingFragment StoreEntitySet="hh07">
+                <ScalarProperty Name="face_o" ColumnName="face_o" />
+                <ScalarProperty Name="face_i" ColumnName="face_i" />
+                <ScalarProperty Name="face_f" ColumnName="face_f" />
+                <ScalarProperty Name="pred_id" ColumnName="pred_id" />
+                <ScalarProperty Name="face_id" ColumnName="face_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="hh15">
+            <EntityTypeMapping TypeName="DataModel.hh15">
+              <MappingFragment StoreEntitySet="hh15">
+                <ScalarProperty Name="pred_nam" ColumnName="pred_nam" />
+                <ScalarProperty Name="pred_id" ColumnName="pred_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <edmx:Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+      </DesignerInfoPropertySet>
+    </edmx:Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram Name="DataModel" >
+        <EntityTypeShape EntityType="DataModel.fds01" Width="1.5" PointX="6.75" PointY="1.5" Height="2.9417936197916656" />
+        <EntityTypeShape EntityType="DataModel.fds0111" Width="1.5" PointX="11.125" PointY="3.125" Height="3.1340950520833317" />
+        <EntityTypeShape EntityType="DataModel.fss011" Width="1.5" PointX="8.875" PointY="2.75" Height="3.9033007812499996" />
+        <EntityTypeShape EntityType="DataModel.Employee" Width="1.5" PointX="6.625" PointY="5.375" Height="2.3648893229166656" />
+        <EntityTypeShape EntityType="DataModel.hh15" Width="1.5" PointX="4.375" PointY="3.625" Height="2.1725878906249996" />
+        <AssociationConnector Association="DataModel.FK_fds01_hh15" >
+          <ConnectorPoint PointX="5.875" PointY="4.0333968098958328" />
+          <ConnectorPoint PointX="6.75" PointY="4.0333968098958328" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.FK_fss011_fds01" >
+          <ConnectorPoint PointX="8.25" PointY="3.5958968098958328" />
+          <ConnectorPoint PointX="8.5416666666666661" PointY="3.5958968098958324" />
+          <ConnectorPoint PointX="8.7083333333333339" PointY="3.5958968098958328" />
+          <ConnectorPoint PointX="8.875" PointY="3.5958968098958328" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.FK_fds0111_fds0111" >
+          <ConnectorPoint PointX="11.656923076923077" PointY="6.2590950520833317" />
+          <ConnectorPoint PointX="11.656923076923077" PointY="6.5090950520833317" />
+          <ConnectorPoint PointX="12.103461538461538" PointY="6.5090950520833317" />
+          <ConnectorPoint PointX="12.103461538461538" PointY="6.2590950520833317" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.FK_fds0111_fss011" >
+          <ConnectorPoint PointX="10.375" PointY="4.6920475260416659" />
+          <ConnectorPoint PointX="11.125" PointY="4.6920475260416659" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.FK_fds0111_hh15" >
+          <ConnectorPoint PointX="5.875" PointY="4.9083968098958328" />
+          <ConnectorPoint PointX="8.625" PointY="4.9083968098958328" />
+          <ConnectorPoint PointX="8.625" PointY="2.5" />
+          <ConnectorPoint PointX="11.875" PointY="2.5" />
+          <ConnectorPoint PointX="11.875" PointY="3.125" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.FK_fss011_fss011" >
+          <ConnectorPoint PointX="9.4069230769230767" PointY="6.65330078125" />
+          <ConnectorPoint PointX="9.4069230769230767" PointY="6.90330078125" />
+          <ConnectorPoint PointX="9.8534615384615378" PointY="6.90330078125" />
+          <ConnectorPoint PointX="9.8534615384615378" PointY="6.65330078125" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.FK_fss011_hh07" >
+          <ConnectorPoint PointX="8.125" PointY="6.014150390625" />
+          <ConnectorPoint PointX="8.875" PointY="6.014150390625" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.FK_fss011_hh15" >
+          <ConnectorPoint PointX="5.875" PointY="4.6438452148437488" />
+          <ConnectorPoint PointX="8.5416666666666661" PointY="4.6438452148437479" />
+          <ConnectorPoint PointX="8.7083333333333339" PointY="4.6438452148437488" />
+          <ConnectorPoint PointX="8.875" PointY="4.6438452148437488" />
+        </AssociationConnector>
+        <AssociationConnector Association="DataModel.FK_hh07_hh15" >
+          <ConnectorPoint PointX="5.875" PointY="5.5862939453125" />
+          <ConnectorPoint PointX="6.625" PointY="5.5862939453125" />
+        </AssociationConnector>
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
