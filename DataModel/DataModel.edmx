@@ -223,9 +223,9 @@
           <EntitySet Name="fds0111" EntityType="DataModel.fds0111" />
           <EntitySet Name="fss011" EntityType="DataModel.fss011" />
           <EntitySet Name="Employes" EntityType="DataModel.Employee" />
-          <EntitySet Name="hh15" EntityType="DataModel.hh15" />
+          <EntitySet Name="Contragents" EntityType="DataModel.Contragent" />
           <AssociationSet Name="FK_fds01_hh15" Association="DataModel.FK_fds01_hh15">
-            <End Role="hh15" EntitySet="hh15" />
+            <End Role="hh15" EntitySet="Contragents" />
             <End Role="fds01" EntitySet="fds01" />
           </AssociationSet>
           <AssociationSet Name="FK_fss011_fds01" Association="DataModel.FK_fss011_fds01">
@@ -241,7 +241,7 @@
             <End Role="fds0111" EntitySet="fds0111" />
           </AssociationSet>
           <AssociationSet Name="FK_fds0111_hh15" Association="DataModel.FK_fds0111_hh15">
-            <End Role="hh15" EntitySet="hh15" />
+            <End Role="hh15" EntitySet="Contragents" />
             <End Role="fds0111" EntitySet="fds0111" />
           </AssociationSet>
           <AssociationSet Name="FK_fss011_fss011" Association="DataModel.FK_fss011_fss011">
@@ -253,11 +253,11 @@
             <End Role="fss011" EntitySet="fss011" />
           </AssociationSet>
           <AssociationSet Name="FK_fss011_hh15" Association="DataModel.FK_fss011_hh15">
-            <End Role="hh15" EntitySet="hh15" />
+            <End Role="hh15" EntitySet="Contragents" />
             <End Role="fss011" EntitySet="fss011" />
           </AssociationSet>
           <AssociationSet Name="FK_hh07_hh15" Association="DataModel.FK_hh07_hh15">
-            <End Role="hh15" EntitySet="hh15" />
+            <End Role="hh15" EntitySet="Contragents" />
             <End Role="hh07" EntitySet="Employes" />
           </AssociationSet>
         </EntityContainer>
@@ -314,33 +314,33 @@
         </EntityType>
         <EntityType Name="Employee">
           <Key>
-            <PropertyRef Name="face_id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int32" Name="face_id" Nullable="false" />
-          <Property Type="Int32" Name="pred_id" Nullable="false" />
-          <Property Type="String" Name="face_f" MaxLength="20" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="face_i" MaxLength="20" FixedLength="true" Unicode="true" />
-          <Property Type="String" Name="face_o" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="Int32" Name="Contraent" Nullable="false" />
+          <Property Type="String" Name="LastName" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="Name" MaxLength="20" FixedLength="true" Unicode="true" />
+          <Property Type="String" Name="SureName" MaxLength="20" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="fss011" Relationship="DataModel.FK_fss011_hh07" FromRole="hh07" ToRole="fss011" />
-          <NavigationProperty Name="hh15" Relationship="DataModel.FK_hh07_hh15" FromRole="hh07" ToRole="hh15" />
+          <NavigationProperty Name="Contragent" Relationship="DataModel.FK_hh07_hh15" FromRole="hh07" ToRole="hh15" />
         </EntityType>
-        <EntityType Name="hh15">
+        <EntityType Name="Contragent">
           <Key>
-            <PropertyRef Name="pred_id" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Type="Int32" Name="pred_id" Nullable="false" />
-          <Property Type="String" Name="pred_nam" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Type="Int32" Name="Id" Nullable="false" />
+          <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="fds01" Relationship="DataModel.FK_fds01_hh15" FromRole="hh15" ToRole="fds01" />
           <NavigationProperty Name="fds0111" Relationship="DataModel.FK_fds0111_hh15" FromRole="hh15" ToRole="fds0111" />
           <NavigationProperty Name="fss011" Relationship="DataModel.FK_fss011_hh15" FromRole="hh15" ToRole="fss011" />
           <NavigationProperty Name="hh07" Relationship="DataModel.FK_hh07_hh15" FromRole="hh15" ToRole="hh07" />
         </EntityType>
         <Association Name="FK_fds01_hh15">
-          <End Type="DataModel.hh15" Role="hh15" Multiplicity="1" />
+          <End Type="DataModel.Contragent" Role="hh15" Multiplicity="1" />
           <End Type="DataModel.fds01" Role="fds01" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="hh15">
-              <PropertyRef Name="pred_id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="fds01">
               <PropertyRef Name="pred_id" />
@@ -384,11 +384,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_fds0111_hh15">
-          <End Type="DataModel.hh15" Role="hh15" Multiplicity="0..1" />
+          <End Type="DataModel.Contragent" Role="hh15" Multiplicity="0..1" />
           <End Type="DataModel.fds0111" Role="fds0111" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="hh15">
-              <PropertyRef Name="pred_id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="fds0111">
               <PropertyRef Name="pred_id" />
@@ -412,7 +412,7 @@
           <End Type="DataModel.fss011" Role="fss011" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="hh07">
-              <PropertyRef Name="face_id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="fss011">
               <PropertyRef Name="face_id" />
@@ -420,11 +420,11 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_fss011_hh15">
-          <End Type="DataModel.hh15" Role="hh15" Multiplicity="0..1" />
+          <End Type="DataModel.Contragent" Role="hh15" Multiplicity="0..1" />
           <End Type="DataModel.fss011" Role="fss011" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="hh15">
-              <PropertyRef Name="pred_id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="fss011">
               <PropertyRef Name="pred_id" />
@@ -432,14 +432,14 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_hh07_hh15">
-          <End Type="DataModel.hh15" Role="hh15" Multiplicity="1" />
+          <End Type="DataModel.Contragent" Role="hh15" Multiplicity="1" />
           <End Type="DataModel.Employee" Role="hh07" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="hh15">
-              <PropertyRef Name="pred_id" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="hh07">
-              <PropertyRef Name="pred_id" />
+              <PropertyRef Name="Contraent" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -496,19 +496,19 @@
           <EntitySetMapping Name="Employes">
             <EntityTypeMapping TypeName="DataModel.Employee">
               <MappingFragment StoreEntitySet="hh07">
-                <ScalarProperty Name="face_o" ColumnName="face_o" />
-                <ScalarProperty Name="face_i" ColumnName="face_i" />
-                <ScalarProperty Name="face_f" ColumnName="face_f" />
-                <ScalarProperty Name="pred_id" ColumnName="pred_id" />
-                <ScalarProperty Name="face_id" ColumnName="face_id" />
+                <ScalarProperty Name="SureName" ColumnName="face_o" />
+                <ScalarProperty Name="Name" ColumnName="face_i" />
+                <ScalarProperty Name="LastName" ColumnName="face_f" />
+                <ScalarProperty Name="Contraent" ColumnName="pred_id" />
+                <ScalarProperty Name="Id" ColumnName="face_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="hh15">
-            <EntityTypeMapping TypeName="DataModel.hh15">
+          <EntitySetMapping Name="Contragents">
+            <EntityTypeMapping TypeName="DataModel.Contragent">
               <MappingFragment StoreEntitySet="hh15">
-                <ScalarProperty Name="pred_nam" ColumnName="pred_nam" />
-                <ScalarProperty Name="pred_id" ColumnName="pred_id" />
+                <ScalarProperty Name="Name" ColumnName="pred_nam" />
+                <ScalarProperty Name="Id" ColumnName="pred_id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -533,20 +533,20 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="DataModel" >
-        <EntityTypeShape EntityType="DataModel.fds01" Width="1.5" PointX="6.75" PointY="1.5" Height="2.9417936197916656" />
+        <EntityTypeShape EntityType="DataModel.fds01" Width="1.5" PointX="6.75" PointY="1.125" Height="2.9417936197916656" />
         <EntityTypeShape EntityType="DataModel.fds0111" Width="1.5" PointX="11.125" PointY="3.125" Height="3.1340950520833317" />
         <EntityTypeShape EntityType="DataModel.fss011" Width="1.5" PointX="8.875" PointY="2.75" Height="3.9033007812499996" />
         <EntityTypeShape EntityType="DataModel.Employee" Width="1.5" PointX="6.625" PointY="5.375" Height="2.3648893229166656" />
-        <EntityTypeShape EntityType="DataModel.hh15" Width="1.5" PointX="4.375" PointY="3.625" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="DataModel.Contragent" Width="1.5" PointX="4.375" PointY="3.625" Height="2.1725878906249996" />
         <AssociationConnector Association="DataModel.FK_fds01_hh15" >
-          <ConnectorPoint PointX="5.875" PointY="4.0333968098958328" />
-          <ConnectorPoint PointX="6.75" PointY="4.0333968098958328" />
+          <ConnectorPoint PointX="5.875" PointY="3.8458968098958328" />
+          <ConnectorPoint PointX="6.75" PointY="3.8458968098958328" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.FK_fss011_fds01" >
-          <ConnectorPoint PointX="8.25" PointY="3.5958968098958328" />
-          <ConnectorPoint PointX="8.5416666666666661" PointY="3.5958968098958324" />
-          <ConnectorPoint PointX="8.7083333333333339" PointY="3.5958968098958328" />
-          <ConnectorPoint PointX="8.875" PointY="3.5958968098958328" />
+          <ConnectorPoint PointX="8.25" PointY="3.4083968098958328" />
+          <ConnectorPoint PointX="8.5416666666666661" PointY="3.4083968098958324" />
+          <ConnectorPoint PointX="8.7083333333333339" PointY="3.4083968098958328" />
+          <ConnectorPoint PointX="8.875" PointY="3.4083968098958328" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.FK_fds0111_fds0111" >
           <ConnectorPoint PointX="11.656923076923077" PointY="6.2590950520833317" />
@@ -559,8 +559,8 @@
           <ConnectorPoint PointX="11.125" PointY="4.6920475260416659" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.FK_fds0111_hh15" >
-          <ConnectorPoint PointX="5.875" PointY="4.9083968098958328" />
-          <ConnectorPoint PointX="8.625" PointY="4.9083968098958328" />
+          <ConnectorPoint PointX="5.875" PointY="4.7208968098958328" />
+          <ConnectorPoint PointX="8.625" PointY="4.7208968098958328" />
           <ConnectorPoint PointX="8.625" PointY="2.5" />
           <ConnectorPoint PointX="11.875" PointY="2.5" />
           <ConnectorPoint PointX="11.875" PointY="3.125" />
@@ -576,10 +576,10 @@
           <ConnectorPoint PointX="8.875" PointY="6.014150390625" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.FK_fss011_hh15" >
-          <ConnectorPoint PointX="5.875" PointY="4.6438452148437488" />
-          <ConnectorPoint PointX="8.5416666666666661" PointY="4.6438452148437479" />
-          <ConnectorPoint PointX="8.7083333333333339" PointY="4.6438452148437488" />
-          <ConnectorPoint PointX="8.875" PointY="4.6438452148437488" />
+          <ConnectorPoint PointX="5.875" PointY="4.3625952148437488" />
+          <ConnectorPoint PointX="8.5416666666666661" PointY="4.3625952148437479" />
+          <ConnectorPoint PointX="8.7083333333333339" PointY="4.3625952148437488" />
+          <ConnectorPoint PointX="8.875" PointY="4.3625952148437488" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.FK_hh07_hh15" >
           <ConnectorPoint PointX="5.875" PointY="5.5862939453125" />

@@ -16,6 +16,19 @@ using System.Xml.Serialization;
 using System.Runtime.Serialization;
 
 [assembly: EdmSchemaAttribute()]
+#region EDM Relationship Metadata
+
+[assembly: EdmRelationshipAttribute("DataModel", "FK_fds01_hh15", "hh15", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataModel.Contragent), "fds01", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataModel.fds01), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FK_fss011_fds01", "fds01", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DataModel.fds01), "fss011", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataModel.fss011), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FK_fds0111_fds0111", "fds0111", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DataModel.fds0111), "fds01111", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataModel.fds0111), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FK_fds0111_fss011", "fss011", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DataModel.fss011), "fds0111", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataModel.fds0111), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FK_fds0111_hh15", "hh15", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DataModel.Contragent), "fds0111", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataModel.fds0111), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FK_fss011_fss011", "fss011", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DataModel.fss011), "fss0111", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataModel.fss011), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FK_fss011_hh07", "hh07", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DataModel.Employee), "fss011", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataModel.fss011), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FK_fss011_hh15", "hh15", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DataModel.Contragent), "fss011", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataModel.fss011), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FK_hh07_hh15", "hh15", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataModel.Contragent), "hh07", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataModel.Employee), true)]
+
+#endregion
 
 namespace DataModel
 {
@@ -68,28 +81,124 @@ namespace DataModel
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<Contragent> ContragentSet
+        public ObjectSet<fds01> fds01
         {
             get
             {
-                if ((_ContragentSet == null))
+                if ((_fds01 == null))
                 {
-                    _ContragentSet = base.CreateObjectSet<Contragent>("ContragentSet");
+                    _fds01 = base.CreateObjectSet<fds01>("fds01");
                 }
-                return _ContragentSet;
+                return _fds01;
             }
         }
-        private ObjectSet<Contragent> _ContragentSet;
+        private ObjectSet<fds01> _fds01;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<fds0111> fds0111
+        {
+            get
+            {
+                if ((_fds0111 == null))
+                {
+                    _fds0111 = base.CreateObjectSet<fds0111>("fds0111");
+                }
+                return _fds0111;
+            }
+        }
+        private ObjectSet<fds0111> _fds0111;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<fss011> fss011
+        {
+            get
+            {
+                if ((_fss011 == null))
+                {
+                    _fss011 = base.CreateObjectSet<fss011>("fss011");
+                }
+                return _fss011;
+            }
+        }
+        private ObjectSet<fss011> _fss011;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Employee> Employes
+        {
+            get
+            {
+                if ((_Employes == null))
+                {
+                    _Employes = base.CreateObjectSet<Employee>("Employes");
+                }
+                return _Employes;
+            }
+        }
+        private ObjectSet<Employee> _Employes;
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        public ObjectSet<Contragent> Contragents
+        {
+            get
+            {
+                if ((_Contragents == null))
+                {
+                    _Contragents = base.CreateObjectSet<Contragent>("Contragents");
+                }
+                return _Contragents;
+            }
+        }
+        private ObjectSet<Contragent> _Contragents;
 
         #endregion
         #region AddTo Methods
     
         /// <summary>
-        /// Deprecated Method for adding a new object to the ContragentSet EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// Deprecated Method for adding a new object to the fds01 EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToContragentSet(Contragent contragent)
+        public void AddTofds01(fds01 fds01)
         {
-            base.AddObject("ContragentSet", contragent);
+            base.AddObject("fds01", fds01);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the fds0111 EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTofds0111(fds0111 fds0111)
+        {
+            base.AddObject("fds0111", fds0111);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the fss011 EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddTofss011(fss011 fss011)
+        {
+            base.AddObject("fss011", fss011);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Employes EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToEmployes(Employee employee)
+        {
+            base.AddObject("Employes", employee);
+        }
+    
+        /// <summary>
+        /// Deprecated Method for adding a new object to the Contragents EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
+        /// </summary>
+        public void AddToContragents(Contragent contragent)
+        {
+            base.AddObject("Contragents", contragent);
         }
 
         #endregion
@@ -150,9 +259,1412 @@ namespace DataModel
         private global::System.Int32 _Id;
         partial void OnIdChanging(global::System.Int32 value);
         partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
 
         #endregion
     
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "FK_fds01_hh15", "fds01")]
+        public EntityCollection<fds01> fds01
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<fds01>("DataModel.FK_fds01_hh15", "fds01");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<fds01>("DataModel.FK_fds01_hh15", "fds01", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "FK_fds0111_hh15", "fds0111")]
+        public EntityCollection<fds0111> fds0111
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<fds0111>("DataModel.FK_fds0111_hh15", "fds0111");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<fds0111>("DataModel.FK_fds0111_hh15", "fds0111", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "FK_fss011_hh15", "fss011")]
+        public EntityCollection<fss011> fss011
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<fss011>("DataModel.FK_fss011_hh15", "fss011");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<fss011>("DataModel.FK_fss011_hh15", "fss011", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "FK_hh07_hh15", "hh07")]
+        public EntityCollection<Employee> hh07
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<Employee>("DataModel.FK_hh07_hh15", "hh07");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<Employee>("DataModel.FK_hh07_hh15", "hh07", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="Employee")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class Employee : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new Employee object.
+        /// </summary>
+        /// <param name="id">Initial value of the Id property.</param>
+        /// <param name="contraent">Initial value of the Contraent property.</param>
+        public static Employee CreateEmployee(global::System.Int32 id, global::System.Int32 contraent)
+        {
+            Employee employee = new Employee();
+            employee.Id = id;
+            employee.Contraent = contraent;
+            return employee;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Id
+        {
+            get
+            {
+                return _Id;
+            }
+            set
+            {
+                if (_Id != value)
+                {
+                    OnIdChanging(value);
+                    ReportPropertyChanging("Id");
+                    _Id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("Id");
+                    OnIdChanged();
+                }
+            }
+        }
+        private global::System.Int32 _Id;
+        partial void OnIdChanging(global::System.Int32 value);
+        partial void OnIdChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 Contraent
+        {
+            get
+            {
+                return _Contraent;
+            }
+            set
+            {
+                OnContraentChanging(value);
+                ReportPropertyChanging("Contraent");
+                _Contraent = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("Contraent");
+                OnContraentChanged();
+            }
+        }
+        private global::System.Int32 _Contraent;
+        partial void OnContraentChanging(global::System.Int32 value);
+        partial void OnContraentChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String LastName
+        {
+            get
+            {
+                return _LastName;
+            }
+            set
+            {
+                OnLastNameChanging(value);
+                ReportPropertyChanging("LastName");
+                _LastName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("LastName");
+                OnLastNameChanged();
+            }
+        }
+        private global::System.String _LastName;
+        partial void OnLastNameChanging(global::System.String value);
+        partial void OnLastNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String Name
+        {
+            get
+            {
+                return _Name;
+            }
+            set
+            {
+                OnNameChanging(value);
+                ReportPropertyChanging("Name");
+                _Name = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("Name");
+                OnNameChanged();
+            }
+        }
+        private global::System.String _Name;
+        partial void OnNameChanging(global::System.String value);
+        partial void OnNameChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String SureName
+        {
+            get
+            {
+                return _SureName;
+            }
+            set
+            {
+                OnSureNameChanging(value);
+                ReportPropertyChanging("SureName");
+                _SureName = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("SureName");
+                OnSureNameChanged();
+            }
+        }
+        private global::System.String _SureName;
+        partial void OnSureNameChanging(global::System.String value);
+        partial void OnSureNameChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "FK_fss011_hh07", "fss011")]
+        public EntityCollection<fss011> fss011
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<fss011>("DataModel.FK_fss011_hh07", "fss011");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<fss011>("DataModel.FK_fss011_hh07", "fss011", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "FK_hh07_hh15", "hh15")]
+        public Contragent Contragent
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Contragent>("DataModel.FK_hh07_hh15", "hh15").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Contragent>("DataModel.FK_hh07_hh15", "hh15").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Contragent> ContragentReference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Contragent>("DataModel.FK_hh07_hh15", "hh15");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Contragent>("DataModel.FK_hh07_hh15", "hh15", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="fds01")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class fds01 : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new fds01 object.
+        /// </summary>
+        /// <param name="szdoc_id">Initial value of the szdoc_id property.</param>
+        /// <param name="pred_id">Initial value of the pred_id property.</param>
+        public static fds01 Createfds01(global::System.Int32 szdoc_id, global::System.Int32 pred_id)
+        {
+            fds01 fds01 = new fds01();
+            fds01.szdoc_id = szdoc_id;
+            fds01.pred_id = pred_id;
+            return fds01;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 szdoc_id
+        {
+            get
+            {
+                return _szdoc_id;
+            }
+            set
+            {
+                if (_szdoc_id != value)
+                {
+                    Onszdoc_idChanging(value);
+                    ReportPropertyChanging("szdoc_id");
+                    _szdoc_id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("szdoc_id");
+                    Onszdoc_idChanged();
+                }
+            }
+        }
+        private global::System.Int32 _szdoc_id;
+        partial void Onszdoc_idChanging(global::System.Int32 value);
+        partial void Onszdoc_idChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 pred_id
+        {
+            get
+            {
+                return _pred_id;
+            }
+            set
+            {
+                Onpred_idChanging(value);
+                ReportPropertyChanging("pred_id");
+                _pred_id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("pred_id");
+                Onpred_idChanged();
+            }
+        }
+        private global::System.Int32 _pred_id;
+        partial void Onpred_idChanging(global::System.Int32 value);
+        partial void Onpred_idChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String szdocv_nc
+        {
+            get
+            {
+                return _szdocv_nc;
+            }
+            set
+            {
+                Onszdocv_ncChanging(value);
+                ReportPropertyChanging("szdocv_nc");
+                _szdocv_nc = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("szdocv_nc");
+                Onszdocv_ncChanged();
+            }
+        }
+        private global::System.String _szdocv_nc;
+        partial void Onszdocv_ncChanging(global::System.String value);
+        partial void Onszdocv_ncChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> szdocv_dat
+        {
+            get
+            {
+                return _szdocv_dat;
+            }
+            set
+            {
+                Onszdocv_datChanging(value);
+                ReportPropertyChanging("szdocv_dat");
+                _szdocv_dat = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("szdocv_dat");
+                Onszdocv_datChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _szdocv_dat;
+        partial void Onszdocv_datChanging(Nullable<global::System.DateTime> value);
+        partial void Onszdocv_datChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String szdocr_nc
+        {
+            get
+            {
+                return _szdocr_nc;
+            }
+            set
+            {
+                Onszdocr_ncChanging(value);
+                ReportPropertyChanging("szdocr_nc");
+                _szdocr_nc = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("szdocr_nc");
+                Onszdocr_ncChanged();
+            }
+        }
+        private global::System.String _szdocr_nc;
+        partial void Onszdocr_ncChanging(global::System.String value);
+        partial void Onszdocr_ncChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> szdocr_dat
+        {
+            get
+            {
+                return _szdocr_dat;
+            }
+            set
+            {
+                Onszdocr_datChanging(value);
+                ReportPropertyChanging("szdocr_dat");
+                _szdocr_dat = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("szdocr_dat");
+                Onszdocr_datChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _szdocr_dat;
+        partial void Onszdocr_datChanging(Nullable<global::System.DateTime> value);
+        partial void Onszdocr_datChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> face_id
+        {
+            get
+            {
+                return _face_id;
+            }
+            set
+            {
+                Onface_idChanging(value);
+                ReportPropertyChanging("face_id");
+                _face_id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("face_id");
+                Onface_idChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _face_id;
+        partial void Onface_idChanging(Nullable<global::System.Int32> value);
+        partial void Onface_idChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String szdoc_desc
+        {
+            get
+            {
+                return _szdoc_desc;
+            }
+            set
+            {
+                Onszdoc_descChanging(value);
+                ReportPropertyChanging("szdoc_desc");
+                _szdoc_desc = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("szdoc_desc");
+                Onszdoc_descChanged();
+            }
+        }
+        private global::System.String _szdoc_desc;
+        partial void Onszdoc_descChanging(global::System.String value);
+        partial void Onszdoc_descChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "FK_fds01_hh15", "hh15")]
+        public Contragent hh15
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Contragent>("DataModel.FK_fds01_hh15", "hh15").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Contragent>("DataModel.FK_fds01_hh15", "hh15").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Contragent> hh15Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Contragent>("DataModel.FK_fds01_hh15", "hh15");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Contragent>("DataModel.FK_fds01_hh15", "hh15", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "FK_fss011_fds01", "fss011")]
+        public EntityCollection<fss011> fss011
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<fss011>("DataModel.FK_fss011_fds01", "fss011");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<fss011>("DataModel.FK_fss011_fds01", "fss011", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="fds0111")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class fds0111 : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new fds0111 object.
+        /// </summary>
+        /// <param name="szdocet_id">Initial value of the szdocet_id property.</param>
+        public static fds0111 Createfds0111(global::System.Int32 szdocet_id)
+        {
+            fds0111 fds0111 = new fds0111();
+            fds0111.szdocet_id = szdocet_id;
+            return fds0111;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 szdocet_id
+        {
+            get
+            {
+                return _szdocet_id;
+            }
+            set
+            {
+                if (_szdocet_id != value)
+                {
+                    Onszdocet_idChanging(value);
+                    ReportPropertyChanging("szdocet_id");
+                    _szdocet_id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("szdocet_id");
+                    Onszdocet_idChanged();
+                }
+            }
+        }
+        private global::System.Int32 _szdocet_id;
+        partial void Onszdocet_idChanging(global::System.Int32 value);
+        partial void Onszdocet_idChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> strszdoc_id
+        {
+            get
+            {
+                return _strszdoc_id;
+            }
+            set
+            {
+                Onstrszdoc_idChanging(value);
+                ReportPropertyChanging("strszdoc_id");
+                _strszdoc_id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("strszdoc_id");
+                Onstrszdoc_idChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _strszdoc_id;
+        partial void Onstrszdoc_idChanging(Nullable<global::System.Int32> value);
+        partial void Onstrszdoc_idChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> pred_id
+        {
+            get
+            {
+                return _pred_id;
+            }
+            set
+            {
+                Onpred_idChanging(value);
+                ReportPropertyChanging("pred_id");
+                _pred_id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("pred_id");
+                Onpred_idChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _pred_id;
+        partial void Onpred_idChanging(Nullable<global::System.Int32> value);
+        partial void Onpred_idChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String szdocet_desc
+        {
+            get
+            {
+                return _szdocet_desc;
+            }
+            set
+            {
+                Onszdocet_descChanging(value);
+                ReportPropertyChanging("szdocet_desc");
+                _szdocet_desc = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("szdocet_desc");
+                Onszdocet_descChanged();
+            }
+        }
+        private global::System.String _szdocet_desc;
+        partial void Onszdocet_descChanging(global::System.String value);
+        partial void Onszdocet_descChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> start_dat
+        {
+            get
+            {
+                return _start_dat;
+            }
+            set
+            {
+                Onstart_datChanging(value);
+                ReportPropertyChanging("start_dat");
+                _start_dat = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("start_dat");
+                Onstart_datChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _start_dat;
+        partial void Onstart_datChanging(Nullable<global::System.DateTime> value);
+        partial void Onstart_datChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String end_dat
+        {
+            get
+            {
+                return _end_dat;
+            }
+            set
+            {
+                Onend_datChanging(value);
+                ReportPropertyChanging("end_dat");
+                _end_dat = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("end_dat");
+                Onend_datChanged();
+            }
+        }
+        private global::System.String _end_dat;
+        partial void Onend_datChanging(global::System.String value);
+        partial void Onend_datChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> upszdocet_id
+        {
+            get
+            {
+                return _upszdocet_id;
+            }
+            set
+            {
+                Onupszdocet_idChanging(value);
+                ReportPropertyChanging("upszdocet_id");
+                _upszdocet_id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("upszdocet_id");
+                Onupszdocet_idChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _upszdocet_id;
+        partial void Onupszdocet_idChanging(Nullable<global::System.Int32> value);
+        partial void Onupszdocet_idChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "FK_fds0111_fds0111", "fds01111")]
+        public EntityCollection<fds0111> fds01111
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<fds0111>("DataModel.FK_fds0111_fds0111", "fds01111");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<fds0111>("DataModel.FK_fds0111_fds0111", "fds01111", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "FK_fds0111_fds0111", "fds0111")]
+        public fds0111 fds01112
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<fds0111>("DataModel.FK_fds0111_fds0111", "fds0111").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<fds0111>("DataModel.FK_fds0111_fds0111", "fds0111").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<fds0111> fds01112Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<fds0111>("DataModel.FK_fds0111_fds0111", "fds0111");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<fds0111>("DataModel.FK_fds0111_fds0111", "fds0111", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "FK_fds0111_fss011", "fss011")]
+        public fss011 fss011
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<fss011>("DataModel.FK_fds0111_fss011", "fss011").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<fss011>("DataModel.FK_fds0111_fss011", "fss011").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<fss011> fss011Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<fss011>("DataModel.FK_fds0111_fss011", "fss011");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<fss011>("DataModel.FK_fds0111_fss011", "fss011", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "FK_fds0111_hh15", "hh15")]
+        public Contragent hh15
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Contragent>("DataModel.FK_fds0111_hh15", "hh15").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Contragent>("DataModel.FK_fds0111_hh15", "hh15").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Contragent> hh15Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Contragent>("DataModel.FK_fds0111_hh15", "hh15");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Contragent>("DataModel.FK_fds0111_hh15", "hh15", value);
+                }
+            }
+        }
+
+        #endregion
+    }
+    
+    /// <summary>
+    /// No Metadata Documentation available.
+    /// </summary>
+    [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="fss011")]
+    [Serializable()]
+    [DataContractAttribute(IsReference=true)]
+    public partial class fss011 : EntityObject
+    {
+        #region Factory Method
+    
+        /// <summary>
+        /// Create a new fss011 object.
+        /// </summary>
+        /// <param name="strsdoc_id">Initial value of the strsdoc_id property.</param>
+        public static fss011 Createfss011(global::System.Int32 strsdoc_id)
+        {
+            fss011 fss011 = new fss011();
+            fss011.strsdoc_id = strsdoc_id;
+            return fss011;
+        }
+
+        #endregion
+        #region Primitive Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=true, IsNullable=false)]
+        [DataMemberAttribute()]
+        public global::System.Int32 strsdoc_id
+        {
+            get
+            {
+                return _strsdoc_id;
+            }
+            set
+            {
+                if (_strsdoc_id != value)
+                {
+                    Onstrsdoc_idChanging(value);
+                    ReportPropertyChanging("strsdoc_id");
+                    _strsdoc_id = StructuralObject.SetValidValue(value);
+                    ReportPropertyChanged("strsdoc_id");
+                    Onstrsdoc_idChanged();
+                }
+            }
+        }
+        private global::System.Int32 _strsdoc_id;
+        partial void Onstrsdoc_idChanging(global::System.Int32 value);
+        partial void Onstrsdoc_idChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> upstrsdoc_id
+        {
+            get
+            {
+                return _upstrsdoc_id;
+            }
+            set
+            {
+                Onupstrsdoc_idChanging(value);
+                ReportPropertyChanging("upstrsdoc_id");
+                _upstrsdoc_id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("upstrsdoc_id");
+                Onupstrsdoc_idChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _upstrsdoc_id;
+        partial void Onupstrsdoc_idChanging(Nullable<global::System.Int32> value);
+        partial void Onupstrsdoc_idChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> szdoc_id
+        {
+            get
+            {
+                return _szdoc_id;
+            }
+            set
+            {
+                Onszdoc_idChanging(value);
+                ReportPropertyChanging("szdoc_id");
+                _szdoc_id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("szdoc_id");
+                Onszdoc_idChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _szdoc_id;
+        partial void Onszdoc_idChanging(Nullable<global::System.Int32> value);
+        partial void Onszdoc_idChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> pred_id
+        {
+            get
+            {
+                return _pred_id;
+            }
+            set
+            {
+                Onpred_idChanging(value);
+                ReportPropertyChanging("pred_id");
+                _pred_id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("pred_id");
+                Onpred_idChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _pred_id;
+        partial void Onpred_idChanging(Nullable<global::System.Int32> value);
+        partial void Onpred_idChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Int32> face_id
+        {
+            get
+            {
+                return _face_id;
+            }
+            set
+            {
+                Onface_idChanging(value);
+                ReportPropertyChanging("face_id");
+                _face_id = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("face_id");
+                Onface_idChanged();
+            }
+        }
+        private Nullable<global::System.Int32> _face_id;
+        partial void Onface_idChanging(Nullable<global::System.Int32> value);
+        partial void Onface_idChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> ispto_dat
+        {
+            get
+            {
+                return _ispto_dat;
+            }
+            set
+            {
+                Onispto_datChanging(value);
+                ReportPropertyChanging("ispto_dat");
+                _ispto_dat = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("ispto_dat");
+                Onispto_datChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _ispto_dat;
+        partial void Onispto_datChanging(Nullable<global::System.DateTime> value);
+        partial void Onispto_datChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.DateTime> close_dat
+        {
+            get
+            {
+                return _close_dat;
+            }
+            set
+            {
+                Onclose_datChanging(value);
+                ReportPropertyChanging("close_dat");
+                _close_dat = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("close_dat");
+                Onclose_datChanged();
+            }
+        }
+        private Nullable<global::System.DateTime> _close_dat;
+        partial void Onclose_datChanging(Nullable<global::System.DateTime> value);
+        partial void Onclose_datChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public Nullable<global::System.Decimal> isptype_n
+        {
+            get
+            {
+                return _isptype_n;
+            }
+            set
+            {
+                Onisptype_nChanging(value);
+                ReportPropertyChanging("isptype_n");
+                _isptype_n = StructuralObject.SetValidValue(value);
+                ReportPropertyChanged("isptype_n");
+                Onisptype_nChanged();
+            }
+        }
+        private Nullable<global::System.Decimal> _isptype_n;
+        partial void Onisptype_nChanging(Nullable<global::System.Decimal> value);
+        partial void Onisptype_nChanged();
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [EdmScalarPropertyAttribute(EntityKeyProperty=false, IsNullable=true)]
+        [DataMemberAttribute()]
+        public global::System.String strzdoc_rem
+        {
+            get
+            {
+                return _strzdoc_rem;
+            }
+            set
+            {
+                Onstrzdoc_remChanging(value);
+                ReportPropertyChanging("strzdoc_rem");
+                _strzdoc_rem = StructuralObject.SetValidValue(value, true);
+                ReportPropertyChanged("strzdoc_rem");
+                Onstrzdoc_remChanged();
+            }
+        }
+        private global::System.String _strzdoc_rem;
+        partial void Onstrzdoc_remChanging(global::System.String value);
+        partial void Onstrzdoc_remChanged();
+
+        #endregion
+    
+        #region Navigation Properties
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "FK_fss011_fds01", "fds01")]
+        public fds01 fds01
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<fds01>("DataModel.FK_fss011_fds01", "fds01").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<fds01>("DataModel.FK_fss011_fds01", "fds01").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<fds01> fds01Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<fds01>("DataModel.FK_fss011_fds01", "fds01");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<fds01>("DataModel.FK_fss011_fds01", "fds01", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "FK_fds0111_fss011", "fds0111")]
+        public EntityCollection<fds0111> fds0111
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<fds0111>("DataModel.FK_fds0111_fss011", "fds0111");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<fds0111>("DataModel.FK_fds0111_fss011", "fds0111", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "FK_fss011_fss011", "fss0111")]
+        public EntityCollection<fss011> fss0111
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<fss011>("DataModel.FK_fss011_fss011", "fss0111");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<fss011>("DataModel.FK_fss011_fss011", "fss0111", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "FK_fss011_fss011", "fss011")]
+        public fss011 fss0112
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<fss011>("DataModel.FK_fss011_fss011", "fss011").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<fss011>("DataModel.FK_fss011_fss011", "fss011").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<fss011> fss0112Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<fss011>("DataModel.FK_fss011_fss011", "fss011");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<fss011>("DataModel.FK_fss011_fss011", "fss011", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "FK_fss011_hh07", "hh07")]
+        public Employee hh07
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Employee>("DataModel.FK_fss011_hh07", "hh07").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Employee>("DataModel.FK_fss011_hh07", "hh07").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Employee> hh07Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Employee>("DataModel.FK_fss011_hh07", "hh07");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Employee>("DataModel.FK_fss011_hh07", "hh07", value);
+                }
+            }
+        }
+    
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [XmlIgnoreAttribute()]
+        [SoapIgnoreAttribute()]
+        [DataMemberAttribute()]
+        [EdmRelationshipNavigationPropertyAttribute("DataModel", "FK_fss011_hh15", "hh15")]
+        public Contragent hh15
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Contragent>("DataModel.FK_fss011_hh15", "hh15").Value;
+            }
+            set
+            {
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Contragent>("DataModel.FK_fss011_hh15", "hh15").Value = value;
+            }
+        }
+        /// <summary>
+        /// No Metadata Documentation available.
+        /// </summary>
+        [BrowsableAttribute(false)]
+        [DataMemberAttribute()]
+        public EntityReference<Contragent> hh15Reference
+        {
+            get
+            {
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<Contragent>("DataModel.FK_fss011_hh15", "hh15");
+            }
+            set
+            {
+                if ((value != null))
+                {
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<Contragent>("DataModel.FK_fss011_hh15", "hh15", value);
+                }
+            }
+        }
+
+        #endregion
     }
 
     #endregion
