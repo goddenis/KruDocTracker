@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace WinGUI
 {
@@ -38,5 +39,20 @@ namespace WinGUI
         {
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            int i = 1;
+            try
+            {
+               var c = new SqlConnection(_builder.ToString());
+               c.Open();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
+       }
     }
 }
