@@ -19,13 +19,13 @@ using System.Runtime.Serialization;
 #region EDM Relationship Metadata
 
 [assembly: EdmRelationshipAttribute("DataModel", "FK_fds01_hh15", "hh15", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataModel.Contragent), "fds01", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataModel.Doc), true)]
-[assembly: EdmRelationshipAttribute("DataModel", "FK_fss011_fds01", "fds01", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DataModel.Doc), "fss011", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataModel.DocRecord), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FK_fss011_fds01", "fds01", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DataModel.Doc), "fss011", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataModel.DocMovment), true)]
 [assembly: EdmRelationshipAttribute("DataModel", "FK_fds0111_fds0111", "fds0111", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DataModel.DocRecordPhase), "fds01111", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataModel.DocRecordPhase), true)]
-[assembly: EdmRelationshipAttribute("DataModel", "FK_fds0111_fss011", "fss011", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DataModel.DocRecord), "fds0111", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataModel.DocRecordPhase), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FK_fds0111_fss011", "fss011", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DataModel.DocMovment), "fds0111", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataModel.DocRecordPhase), true)]
 [assembly: EdmRelationshipAttribute("DataModel", "FK_fds0111_hh15", "hh15", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DataModel.Contragent), "fds0111", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataModel.DocRecordPhase), true)]
-[assembly: EdmRelationshipAttribute("DataModel", "FK_fss011_fss011", "fss011", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DataModel.DocRecord), "fss0111", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataModel.DocRecord), true)]
-[assembly: EdmRelationshipAttribute("DataModel", "FK_fss011_hh07", "hh07", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DataModel.Employee), "fss011", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataModel.DocRecord), true)]
-[assembly: EdmRelationshipAttribute("DataModel", "FK_fss011_hh15", "hh15", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DataModel.Contragent), "fss011", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataModel.DocRecord), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FK_fss011_fss011", "fss011", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DataModel.DocMovment), "fss0111", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataModel.DocMovment), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FK_fss011_hh07", "hh07", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DataModel.Employee), "fss011", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataModel.DocMovment), true)]
+[assembly: EdmRelationshipAttribute("DataModel", "FK_fss011_hh15", "hh15", System.Data.Metadata.Edm.RelationshipMultiplicity.ZeroOrOne, typeof(DataModel.Contragent), "fss011", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataModel.DocMovment), true)]
 [assembly: EdmRelationshipAttribute("DataModel", "FK_hh07_hh15", "hh15", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataModel.Contragent), "hh07", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataModel.Employee), true)]
 [assembly: EdmRelationshipAttribute("DataModel", "FK_fds01_hh07", "Employee", System.Data.Metadata.Edm.RelationshipMultiplicity.One, typeof(DataModel.Employee), "fds01", System.Data.Metadata.Edm.RelationshipMultiplicity.Many, typeof(DataModel.Doc), true)]
 
@@ -114,18 +114,18 @@ namespace DataModel
         /// <summary>
         /// No Metadata Documentation available.
         /// </summary>
-        public ObjectSet<DocRecord> DocRecords
+        public ObjectSet<DocMovment> DocRecords
         {
             get
             {
                 if ((_DocRecords == null))
                 {
-                    _DocRecords = base.CreateObjectSet<DocRecord>("DocRecords");
+                    _DocRecords = base.CreateObjectSet<DocMovment>("DocRecords");
                 }
                 return _DocRecords;
             }
         }
-        private ObjectSet<DocRecord> _DocRecords;
+        private ObjectSet<DocMovment> _DocRecords;
     
         /// <summary>
         /// No Metadata Documentation available.
@@ -181,9 +181,9 @@ namespace DataModel
         /// <summary>
         /// Deprecated Method for adding a new object to the DocRecords EntitySet. Consider using the .Add method of the associated ObjectSet&lt;T&gt; property instead.
         /// </summary>
-        public void AddToDocRecords(DocRecord docRecord)
+        public void AddToDocRecords(DocMovment docMovment)
         {
-            base.AddObject("DocRecords", docRecord);
+            base.AddObject("DocRecords", docMovment);
         }
     
         /// <summary>
@@ -340,17 +340,17 @@ namespace DataModel
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("DataModel", "FK_fss011_hh15", "fss011")]
-        public EntityCollection<DocRecord> DocRecords
+        public EntityCollection<DocMovment> Movments
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<DocRecord>("DataModel.FK_fss011_hh15", "fss011");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<DocMovment>("DataModel.FK_fss011_hh15", "fss011");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<DocRecord>("DataModel.FK_fss011_hh15", "fss011", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<DocMovment>("DataModel.FK_fss011_hh15", "fss011", value);
                 }
             }
         }
@@ -650,17 +650,17 @@ namespace DataModel
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("DataModel", "FK_fss011_fds01", "fss011")]
-        public EntityCollection<DocRecord> DocRows
+        public EntityCollection<DocMovment> DocMovments
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<DocRecord>("DataModel.FK_fss011_fds01", "fss011");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<DocMovment>("DataModel.FK_fss011_fds01", "fss011");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<DocRecord>("DataModel.FK_fss011_fds01", "fss011", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<DocMovment>("DataModel.FK_fss011_fds01", "fss011", value);
                 }
             }
         }
@@ -709,22 +709,22 @@ namespace DataModel
     /// <summary>
     /// No Metadata Documentation available.
     /// </summary>
-    [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="DocRecord")]
+    [EdmEntityTypeAttribute(NamespaceName="DataModel", Name="DocMovment")]
     [Serializable()]
     [DataContractAttribute(IsReference=true)]
-    public partial class DocRecord : EntityObject
+    public partial class DocMovment : EntityObject
     {
         #region Factory Method
     
         /// <summary>
-        /// Create a new DocRecord object.
+        /// Create a new DocMovment object.
         /// </summary>
         /// <param name="id">Initial value of the Id property.</param>
-        public static DocRecord CreateDocRecord(global::System.Int32 id)
+        public static DocMovment CreateDocMovment(global::System.Int32 id)
         {
-            DocRecord docRecord = new DocRecord();
-            docRecord.Id = id;
-            return docRecord;
+            DocMovment docMovment = new DocMovment();
+            docMovment.Id = id;
+            return docMovment;
         }
 
         #endregion
@@ -960,7 +960,7 @@ namespace DataModel
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("DataModel", "FK_fss011_fds01", "fds01")]
-        public Doc Doc
+        public Doc Docs
         {
             get
             {
@@ -976,7 +976,7 @@ namespace DataModel
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<Doc> DocReference
+        public EntityReference<Doc> DocsReference
         {
             get
             {
@@ -1020,17 +1020,17 @@ namespace DataModel
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("DataModel", "FK_fss011_fss011", "fss0111")]
-        public EntityCollection<DocRecord> DownRecord
+        public EntityCollection<DocMovment> DownRecord
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<DocRecord>("DataModel.FK_fss011_fss011", "fss0111");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<DocMovment>("DataModel.FK_fss011_fss011", "fss0111");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<DocRecord>("DataModel.FK_fss011_fss011", "fss0111", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<DocMovment>("DataModel.FK_fss011_fss011", "fss0111", value);
                 }
             }
         }
@@ -1042,15 +1042,15 @@ namespace DataModel
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("DataModel", "FK_fss011_fss011", "fss011")]
-        public DocRecord UpRecord
+        public DocMovment UpRecord
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<DocRecord>("DataModel.FK_fss011_fss011", "fss011").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<DocMovment>("DataModel.FK_fss011_fss011", "fss011").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<DocRecord>("DataModel.FK_fss011_fss011", "fss011").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<DocMovment>("DataModel.FK_fss011_fss011", "fss011").Value = value;
             }
         }
         /// <summary>
@@ -1058,17 +1058,17 @@ namespace DataModel
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<DocRecord> UpRecordReference
+        public EntityReference<DocMovment> UpRecordReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<DocRecord>("DataModel.FK_fss011_fss011", "fss011");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<DocMovment>("DataModel.FK_fss011_fss011", "fss011");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<DocRecord>("DataModel.FK_fss011_fss011", "fss011", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<DocMovment>("DataModel.FK_fss011_fss011", "fss011", value);
                 }
             }
         }
@@ -1418,15 +1418,15 @@ namespace DataModel
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("DataModel", "FK_fds0111_fss011", "fss011")]
-        public DocRecord DocRecord
+        public DocMovment DocMovment
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<DocRecord>("DataModel.FK_fds0111_fss011", "fss011").Value;
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<DocMovment>("DataModel.FK_fds0111_fss011", "fss011").Value;
             }
             set
             {
-                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<DocRecord>("DataModel.FK_fds0111_fss011", "fss011").Value = value;
+                ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<DocMovment>("DataModel.FK_fds0111_fss011", "fss011").Value = value;
             }
         }
         /// <summary>
@@ -1434,17 +1434,17 @@ namespace DataModel
         /// </summary>
         [BrowsableAttribute(false)]
         [DataMemberAttribute()]
-        public EntityReference<DocRecord> DocRecordReference
+        public EntityReference<DocMovment> DocMovmentReference
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<DocRecord>("DataModel.FK_fds0111_fss011", "fss011");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedReference<DocMovment>("DataModel.FK_fds0111_fss011", "fss011");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<DocRecord>("DataModel.FK_fds0111_fss011", "fss011", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedReference<DocMovment>("DataModel.FK_fds0111_fss011", "fss011", value);
                 }
             }
         }
@@ -1650,17 +1650,17 @@ namespace DataModel
         [SoapIgnoreAttribute()]
         [DataMemberAttribute()]
         [EdmRelationshipNavigationPropertyAttribute("DataModel", "FK_fss011_hh07", "fss011")]
-        public EntityCollection<DocRecord> DocReords
+        public EntityCollection<DocMovment> Movment
         {
             get
             {
-                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<DocRecord>("DataModel.FK_fss011_hh07", "fss011");
+                return ((IEntityWithRelationships)this).RelationshipManager.GetRelatedCollection<DocMovment>("DataModel.FK_fss011_hh07", "fss011");
             }
             set
             {
                 if ((value != null))
                 {
-                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<DocRecord>("DataModel.FK_fss011_hh07", "fss011", value);
+                    ((IEntityWithRelationships)this).RelationshipManager.InitializeRelatedCollection<DocMovment>("DataModel.FK_fss011_hh07", "fss011", value);
                 }
             }
         }

@@ -237,7 +237,7 @@
         <EntityContainer Name="DataModelContainer" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Docs" EntityType="DataModel.Doc" />
           <EntitySet Name="DocRecordPhases" EntityType="DataModel.DocRecordPhase" />
-          <EntitySet Name="DocRecords" EntityType="DataModel.DocRecord" />
+          <EntitySet Name="DocRecords" EntityType="DataModel.DocMovment" />
           <EntitySet Name="Employes" EntityType="DataModel.Employee" />
           <EntitySet Name="Contragents" EntityType="DataModel.Contragent" />
           <AssociationSet Name="FK_fds01_hh15" Association="DataModel.FK_fds01_hh15">
@@ -294,7 +294,7 @@
           <Property Type="Int32" Name="EmployeeId" />
           <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Contragent" Relationship="DataModel.FK_fds01_hh15" FromRole="fds01" ToRole="hh15" />
-          <NavigationProperty Name="DocRows" Relationship="DataModel.FK_fss011_fds01" FromRole="fds01" ToRole="fss011" />
+          <NavigationProperty Name="DocMovments" Relationship="DataModel.FK_fss011_fds01" FromRole="fds01" ToRole="fss011" />
           <NavigationProperty Name="Employee" Relationship="DataModel.FK_fds01_hh07" FromRole="fds01" ToRole="Employee" />
         </EntityType>
         <EntityType Name="DocRecordPhase">
@@ -310,10 +310,10 @@
           <Property Type="Int32" Name="UpPhaseId" />
           <NavigationProperty Name="DownPhase" Relationship="DataModel.FK_fds0111_fds0111" FromRole="fds0111" ToRole="fds01111" />
           <NavigationProperty Name="UpPhase" Relationship="DataModel.FK_fds0111_fds0111" FromRole="fds01111" ToRole="fds0111" />
-          <NavigationProperty Name="DocRecord" Relationship="DataModel.FK_fds0111_fss011" FromRole="fds0111" ToRole="fss011" />
+          <NavigationProperty Name="DocMovment" Relationship="DataModel.FK_fds0111_fss011" FromRole="fds0111" ToRole="fss011" />
           <NavigationProperty Name="Contragent" Relationship="DataModel.FK_fds0111_hh15" FromRole="fds0111" ToRole="hh15" />
         </EntityType>
-        <EntityType Name="DocRecord">
+        <EntityType Name="DocMovment">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -326,7 +326,7 @@
           <Property Type="DateTime" Name="CloseDate" />
           <Property Type="Decimal" Name="CloseType" Precision="18" Scale="0" />
           <Property Type="String" Name="Description" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Doc" Relationship="DataModel.FK_fss011_fds01" FromRole="fss011" ToRole="fds01" />
+          <NavigationProperty Name="Docs" Relationship="DataModel.FK_fss011_fds01" FromRole="fss011" ToRole="fds01" />
           <NavigationProperty Name="RecordPhase" Relationship="DataModel.FK_fds0111_fss011" FromRole="fss011" ToRole="fds0111" />
           <NavigationProperty Name="DownRecord" Relationship="DataModel.FK_fss011_fss011" FromRole="fss011" ToRole="fss0111" />
           <NavigationProperty Name="UpRecord" Relationship="DataModel.FK_fss011_fss011" FromRole="fss0111" ToRole="fss011" />
@@ -342,7 +342,7 @@
           <Property Type="String" Name="LastName" MaxLength="20" FixedLength="true" Unicode="true" />
           <Property Type="String" Name="Name" MaxLength="20" FixedLength="true" Unicode="true" />
           <Property Type="String" Name="SureName" MaxLength="20" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="DocReords" Relationship="DataModel.FK_fss011_hh07" FromRole="hh07" ToRole="fss011" />
+          <NavigationProperty Name="Movment" Relationship="DataModel.FK_fss011_hh07" FromRole="hh07" ToRole="fss011" />
           <NavigationProperty Name="Contragent" Relationship="DataModel.FK_hh07_hh15" FromRole="hh07" ToRole="hh15" />
           <NavigationProperty Name="Docs" Relationship="DataModel.FK_fds01_hh07" FromRole="Employee" ToRole="fds01" />
         </EntityType>
@@ -354,7 +354,7 @@
           <Property Type="String" Name="Name" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Docs" Relationship="DataModel.FK_fds01_hh15" FromRole="hh15" ToRole="fds01" />
           <NavigationProperty Name="RecordPhase" Relationship="DataModel.FK_fds0111_hh15" FromRole="hh15" ToRole="fds0111" />
-          <NavigationProperty Name="DocRecords" Relationship="DataModel.FK_fss011_hh15" FromRole="hh15" ToRole="fss011" />
+          <NavigationProperty Name="Movments" Relationship="DataModel.FK_fss011_hh15" FromRole="hh15" ToRole="fss011" />
           <NavigationProperty Name="Employees" Relationship="DataModel.FK_hh07_hh15" FromRole="hh15" ToRole="hh07" />
         </EntityType>
         <Association Name="FK_fds01_hh15">
@@ -371,7 +371,7 @@
         </Association>
         <Association Name="FK_fss011_fds01">
           <End Type="DataModel.Doc" Role="fds01" Multiplicity="0..1" />
-          <End Type="DataModel.DocRecord" Role="fss011" Multiplicity="*" />
+          <End Type="DataModel.DocMovment" Role="fss011" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="fds01">
               <PropertyRef Name="Id" />
@@ -394,7 +394,7 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_fds0111_fss011">
-          <End Type="DataModel.DocRecord" Role="fss011" Multiplicity="0..1" />
+          <End Type="DataModel.DocMovment" Role="fss011" Multiplicity="0..1" />
           <End Type="DataModel.DocRecordPhase" Role="fds0111" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="fss011">
@@ -418,8 +418,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_fss011_fss011">
-          <End Type="DataModel.DocRecord" Role="fss011" Multiplicity="0..1" />
-          <End Type="DataModel.DocRecord" Role="fss0111" Multiplicity="*" />
+          <End Type="DataModel.DocMovment" Role="fss011" Multiplicity="0..1" />
+          <End Type="DataModel.DocMovment" Role="fss0111" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="fss011">
               <PropertyRef Name="Id" />
@@ -431,7 +431,7 @@
         </Association>
         <Association Name="FK_fss011_hh07">
           <End Type="DataModel.Employee" Role="hh07" Multiplicity="0..1" />
-          <End Type="DataModel.DocRecord" Role="fss011" Multiplicity="*" />
+          <End Type="DataModel.DocMovment" Role="fss011" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="hh07">
               <PropertyRef Name="Id" />
@@ -443,7 +443,7 @@
         </Association>
         <Association Name="FK_fss011_hh15">
           <End Type="DataModel.Contragent" Role="hh15" Multiplicity="0..1" />
-          <End Type="DataModel.DocRecord" Role="fss011" Multiplicity="*" />
+          <End Type="DataModel.DocMovment" Role="fss011" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="hh15">
               <PropertyRef Name="Id" />
@@ -513,7 +513,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DocRecords">
-            <EntityTypeMapping TypeName="DataModel.DocRecord">
+            <EntityTypeMapping TypeName="DataModel.DocMovment">
               <MappingFragment StoreEntitySet="fss011">
                 <ScalarProperty Name="Description" ColumnName="strzdoc_rem" />
                 <ScalarProperty Name="CloseType" ColumnName="isptype_n" />
@@ -562,70 +562,60 @@
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
         <DesignerProperty Name="EnablePluralization" Value="False" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Default" />
       </DesignerInfoPropertySet>
     </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram Name="DataModel" >
-        <EntityTypeShape EntityType="DataModel.Doc" Width="1.5" PointX="6.75" PointY="1.125" Height="2.9417936197916656" />
-        <EntityTypeShape EntityType="DataModel.DocRecordPhase" Width="1.5" PointX="11.125" PointY="3.125" Height="3.1340950520833317" />
-        <EntityTypeShape EntityType="DataModel.DocRecord" Width="1.5" PointX="8.875" PointY="2.75" Height="3.9033007812499996" />
-        <EntityTypeShape EntityType="DataModel.Employee" Width="1.5" PointX="6.625" PointY="5.375" Height="2.3648893229166656" />
-        <EntityTypeShape EntityType="DataModel.Contragent" Width="1.5" PointX="4.375" PointY="3.625" Height="2.1725878906249996" />
+        <EntityTypeShape EntityType="DataModel.Doc" Width="1.5" PointX="4.875" PointY="5.25" Height="3.1340950520833317" />
+        <EntityTypeShape EntityType="DataModel.DocRecordPhase" Width="1.5" PointX="8.875" PointY="4.625" Height="3.1340950520833317" />
+        <EntityTypeShape EntityType="DataModel.DocMovment" Width="1.5" PointX="6.875" PointY="4.875" Height="3.9033007812499996" />
+        <EntityTypeShape EntityType="DataModel.Employee" Width="1.5" PointX="3" PointY="7.375" Height="2.5571907552083317" />
+        <EntityTypeShape EntityType="DataModel.Contragent" Width="1.5" PointX="3" PointY="3.875" Height="2.1725878906249996" />
         <AssociationConnector Association="DataModel.FK_fds01_hh15" >
-          <ConnectorPoint PointX="5.875" PointY="3.9420475260416663" />
-          <ConnectorPoint PointX="6.75" PointY="3.9420475260416663" />
+          <ConnectorPoint PointX="4.5" PointY="5.6487939453125" />
+          <ConnectorPoint PointX="4.875" PointY="5.6487939453125" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.FK_fss011_fds01" >
-          <ConnectorPoint PointX="8.25" PointY="3.5045475260416663" />
-          <ConnectorPoint PointX="8.5416666666666661" PointY="3.5045475260416659" />
-          <ConnectorPoint PointX="8.7083333333333339" PointY="3.5045475260416663" />
-          <ConnectorPoint PointX="8.875" PointY="3.5045475260416663" />
+          <ConnectorPoint PointX="6.375" PointY="6.8170475260416659" />
+          <ConnectorPoint PointX="6.875" PointY="6.8170475260416659" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.FK_fds0111_fds0111" >
-          <ConnectorPoint PointX="11.656923076923077" PointY="6.2590950520833317" />
-          <ConnectorPoint PointX="11.656923076923077" PointY="6.5090950520833317" />
-          <ConnectorPoint PointX="12.103461538461538" PointY="6.5090950520833317" />
-          <ConnectorPoint PointX="12.103461538461538" PointY="6.2590950520833317" />
+          <ConnectorPoint PointX="9.4069230769230767" PointY="7.7590950520833317" />
+          <ConnectorPoint PointX="9.4069230769230767" PointY="8.0090950520833317" />
+          <ConnectorPoint PointX="9.8534615384615378" PointY="8.0090950520833317" />
+          <ConnectorPoint PointX="9.8534615384615378" PointY="7.7590950520833317" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.FK_fds0111_fss011" >
-          <ConnectorPoint PointX="10.375" PointY="4.6920475260416659" />
-          <ConnectorPoint PointX="11.125" PointY="4.6920475260416659" />
+          <ConnectorPoint PointX="8.375" PointY="6.3170475260416659" />
+          <ConnectorPoint PointX="8.875" PointY="6.3170475260416659" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.FK_fds0111_hh15" >
-          <ConnectorPoint PointX="5.875" PointY="4.7208968098958328" />
-          <ConnectorPoint PointX="7.354166666666667" PointY="4.7208968098958319" />
-          <ConnectorPoint PointX="7.520833333333333" PointY="4.7208968098958328" />
-          <ConnectorPoint PointX="8.625" PointY="4.7208968098958328" />
-          <ConnectorPoint PointX="8.625" PointY="2.5" />
-          <ConnectorPoint PointX="11.875" PointY="2.5" />
-          <ConnectorPoint PointX="11.875" PointY="3.125" />
+          <ConnectorPoint PointX="4.5" PointY="4.71875" />
+          <ConnectorPoint PointX="8.875" PointY="4.71875" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.FK_fss011_fss011" >
-          <ConnectorPoint PointX="9.4069230769230767" PointY="6.65330078125" />
-          <ConnectorPoint PointX="9.4069230769230767" PointY="6.90330078125" />
-          <ConnectorPoint PointX="9.8534615384615378" PointY="6.90330078125" />
-          <ConnectorPoint PointX="9.8534615384615378" PointY="6.65330078125" />
+          <ConnectorPoint PointX="7.4069230769230776" PointY="8.77830078125" />
+          <ConnectorPoint PointX="7.4069230769230776" PointY="9.02830078125" />
+          <ConnectorPoint PointX="7.8534615384615387" PointY="9.02830078125" />
+          <ConnectorPoint PointX="7.8534615384615387" PointY="8.77830078125" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.FK_fss011_hh07" >
-          <ConnectorPoint PointX="8.125" PointY="6.014150390625" />
-          <ConnectorPoint PointX="8.875" PointY="6.014150390625" />
+          <ConnectorPoint PointX="4.5" PointY="8.6124479166666656" />
+          <ConnectorPoint PointX="6.875" PointY="8.6124479166666656" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.FK_fss011_hh15" >
-          <ConnectorPoint PointX="5.875" PointY="4.3625952148437488" />
-          <ConnectorPoint PointX="7.354166666666667" PointY="4.3625952148437479" />
-          <ConnectorPoint PointX="7.520833333333333" PointY="4.3625952148437488" />
-          <ConnectorPoint PointX="8.5416666666666661" PointY="4.3625952148437479" />
-          <ConnectorPoint PointX="8.7083333333333339" PointY="4.3625952148437488" />
-          <ConnectorPoint PointX="8.875" PointY="4.3625952148437488" />
+          <ConnectorPoint PointX="4.5" PointY="5.03125" />
+          <ConnectorPoint PointX="6.875" PointY="5.03125" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.FK_hh07_hh15" >
-          <ConnectorPoint PointX="5.875" PointY="5.5862939453125" />
-          <ConnectorPoint PointX="6.625" PointY="5.5862939453125" />
+          <ConnectorPoint PointX="3.75" PointY="6.047587890625" />
+          <ConnectorPoint PointX="3.75" PointY="7.375" />
         </AssociationConnector>
         <AssociationConnector Association="DataModel.FK_fds01_hh07" >
-          <ConnectorPoint PointX="7.4375" PointY="5.375" />
-          <ConnectorPoint PointX="7.4375" PointY="4.2590950520833326" />
+          <ConnectorPoint PointX="4.5" PointY="7.8795475260416659" />
+          <ConnectorPoint PointX="4.875" PointY="7.8795475260416659" />
         </AssociationConnector>
       </Diagram>
     </edmx:Diagrams>

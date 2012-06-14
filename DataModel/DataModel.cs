@@ -6,7 +6,7 @@ using System.Data.EntityClient;
 
 namespace DataModel
 {
-    public class Class1
+    public class DataModel
     {
         void test()
         {
@@ -15,7 +15,7 @@ namespace DataModel
 
             var contr = emp.hh15;
 
-            contr.
+            DBContext fdf;
 
         }
     }
