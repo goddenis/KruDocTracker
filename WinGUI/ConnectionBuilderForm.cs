@@ -26,7 +26,8 @@ namespace WinGUI
                 return cbf._builder.ConnectionString;
             }
 
-            throw new Exception("Не заполнена строка подключения");
+            return null;
+
         }
 
         private void ConnectionBuilderForm_Load(object sender, EventArgs e)
@@ -37,7 +38,20 @@ namespace WinGUI
 
         private void button2_Click(object sender, EventArgs e)
         {
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
+            using (var c = new SqlConnection(_builder.ToString()))
+            {
+                try
+                {
+                    c.Open();
+                    this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
+            }
+
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -45,14 +59,14 @@ namespace WinGUI
             int i = 1;
             try
             {
-               var c = new SqlConnection(_builder.ToString());
-               c.Open();
+                var c = new SqlConnection(_builder.ToString());
+                c.Open();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
 
-       }
+        }
     }
 }
