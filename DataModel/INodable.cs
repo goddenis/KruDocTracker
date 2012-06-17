@@ -9,7 +9,7 @@ namespace DataModel
     {
         string GetTextName();
 
-        Dictionary<string, List<INodeble>> getNodableCilds();
+        Dictionary<string, IEnumerable<INodeble>> getNodableCilds();
 
          
     }
