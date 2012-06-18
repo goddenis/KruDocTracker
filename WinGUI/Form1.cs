@@ -31,5 +31,17 @@ namespace WinGUI
             var conn = ConnectionBuilderForm.BuildConnectionString();
             DataModel.ContextHelper.SetConnection(conn);
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            var ctx = ContextHelper.GetContext();
+
+            var contrs = ctx.Contragents.Where(x => x.Id != null);
+            foreach (var c in contrs)
+            {
+                this.treeView1.Nodes.Add(new EntityNode<Contragent>(c));
+            }
+
+        }
     }
 }

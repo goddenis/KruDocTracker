@@ -28,9 +28,9 @@ namespace DataModel.Properties {
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
         [global::System.Configuration.DefaultSettingValueAttribute("Data Source=GODDENIS-LENOVO\\SQLEXPRESS;Initial Catalog=kru;Integrated Security=Tr" +
             "ue")]
-        public string Setting {
+        public string ConnectionToLocal {
             get {
-                return ((string)(this["Setting"]));
+                return ((string)(this["ConnectionToLocal"]));
             }
         }
     }

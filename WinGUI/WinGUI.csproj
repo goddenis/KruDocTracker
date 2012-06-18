@@ -53,6 +53,7 @@
     <Compile Include="ConnectionBuilderForm.Designer.cs">
       <DependentUpon>ConnectionBuilderForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="EntityNode.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

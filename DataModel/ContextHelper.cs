@@ -27,8 +27,10 @@ namespace DataModel
 
         private static EntityConnection GetConnection()
         {
-            var connectionString = System.Configuration.ConfigurationManager.AppSettings["DataModelContainer"];
-            return new EntityConnection(connectionString);
+
+            var connectionString = DataModel.Properties.Settings.Default.ConnectionToLocal;
+            SetConnection(connectionString);
+            return _connrction;
         
         }
 
